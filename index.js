@@ -113,7 +113,7 @@ app.get('/favourite', (req, res) => {
 //login
 app.post('/login', (req, res) => {
     connection.execute(
-        'SELECT * FROM Register WHERE email=?',
+        'SELECT * FROM Register WHERE email=? AND pass=?',
         [req.body.email],
         function(err, results, fields) {
             if (err) {
