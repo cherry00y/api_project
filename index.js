@@ -95,7 +95,7 @@ app.get('/register/:id', (req, res) => {
     connection.query(
         'SELECT * FROM Register WHERE id = ?', [id],
         function (err, results, fields) {
-            res.send(results)
+            res.status(200).send(results)
         }
     )
 })
@@ -166,7 +166,13 @@ app.put('/register', (req, res) => {
         'UPDATE `Register` SET `fname`=?, `lname`=?, `username`=?, `email`=?,`phonenumber`=?,`password`=?, `avatar`=? WHERE id =?',
         [req.body.fname, req.body.lname, req.body.username, req.body.email, req.body.phonenumber, req.body.password, req.body.avatar, req.body.id],
          function (err, results, fields) {
-            res.send(results)
+            if(err){
+                console.error('Error in Put /register: ', err);
+                res.status(500).send('Error update user')
+            }else{
+                res.status(201).send(results)
+            }
+            
         }
     )
 })
