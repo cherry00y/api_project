@@ -132,7 +132,7 @@ app.post('/login', (req, res) => {
 //regis
 app.post('/register', (req, res) => {
     connection.query(
-        'INSERT INTO `Register` (`fname`, `lname`, `username`,`email`,`phonenumber`, `password`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO `Register` (`fname`, `lname`, `username`,`email`,`phonenumber`, `pass`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?)',
         [req.body.fname, req.body.lname, req.body.username, req.body.email, req.body.phonenumber, req.body.password, req.body.avatar],
          function (err, results, fields) {
             if (err) {
