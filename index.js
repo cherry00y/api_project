@@ -111,7 +111,7 @@ app.get('/favourite', (req, res) => {
 })
 
 //login
-app.post('/login', jsonParser, function(req, res, next) {
+app.post('/login', (req, res) => {
     connection.execute(
         'SELECT * FROM Register WHERE Email=?',
         [req.body.Email],
