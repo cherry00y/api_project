@@ -133,7 +133,7 @@ app.post('/login', (req, res) => {
 app.post('/register', (req, res) => {
     connection.query(
         'INSERT INTO `Register` (`fname`, `lname`, `username`,`email`,`phonenumber`, `pass`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [req.body.fname, req.body.lname, req.body.username, req.body.email, req.body.phonenumber, req.body.password, req.body.avatar],
+        [req.body.fname, req.body.lname, req.body.username, req.body.email, req.body.phonenumber, req.body.pass, req.body.avatar],
          function (err, results, fields) {
             if (err) {
                 console.error('Error in POST /register:', err);
