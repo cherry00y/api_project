@@ -110,6 +110,32 @@ app.get('/favourite', (req, res) => {
     )
 })
 
+//login
+app.post('/login', jsonParser, function(req, res, next) {
+    connection.execute(
+        'SELECT * FROM Register WHERE Email=?',
+        [req.body.Email],
+        function(err, result, fields) {
+            if (err) {
+                res.status(500).send('Error');
+            } else if (result.length === 0) {
+                res.status(401).send('Email not found');
+            } else {
+                bcrypt.compare(req.body.Password, result[0].Password, function(err, isLogin) {
+                    if (isLogin) {
+                        var token = jwt.sign({ Email: result[0].Email }, secret, { expiresIn: "1h" });
+                        res.status(200).json({ status: "Ok", message: "Login Success", token });
+                    } else {
+                        res.status(401).json({ status: "Error", message: "Password Incorrect" });
+                    }
+                });
+            }
+        }
+    );
+});
+
+
+
 //create
 //regis
 app.post('/register', (req, res) => {
@@ -119,7 +145,7 @@ app.post('/register', (req, res) => {
          function (err, results, fields) {
             if (err) {
                 console.error('Error in POST /register:', err);
-                res.status(500).send('Error adding user');
+                res.status(500).send('Error adding register');
             } else {
                 res.status(201).send(results);
             }
