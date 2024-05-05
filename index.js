@@ -113,12 +113,12 @@ app.get('/favourite', (req, res) => {
 //login
 app.post('/login', (req, res) => {
     connection.execute(
-        'SELECT * FROM Register WHERE email=? AND pass=?',
-        [req.body.email],
+        'SELECT fname, lname, username, email, phonenumber,avatar FROM Register WHERE email=? AND pass=?',
+        [req.body.email,req.body.pass],
         function(err, results, fields) {
             if (err) {
                 console.error('Error in POST /register:', err);
-                res.status(500).send('Error adding register');
+                res.status(500).send('Error Login');
             } else {
                 res.status(200).send(results);
             }
