@@ -114,7 +114,7 @@ app.get('/favourite', (req, res) => {
 app.post('/login', (req, res) => {
     connection.execute(
         'SELECT fname, lname, username, email, phonenumber,avatar FROM Register WHERE email=? AND pass=?',
-        [req.body.email,req.body.pass],
+        [req.body.email,req.body.password],
         function(err, results, fields) {
             if (err) {
                 console.error('Error in POST /register:', err);
