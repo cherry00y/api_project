@@ -113,8 +113,8 @@ app.get('/favourite', (req, res) => {
 //login
 app.post('/login', (req, res) => {
     connection.execute(
-        'SELECT * FROM Register WHERE Email=?',
-        [req.body.Email],
+        'SELECT * FROM Register WHERE email=?',
+        [req.body.email],
         function(err, result, fields) {
             if (err) {
                 res.status(500).send('Error');
