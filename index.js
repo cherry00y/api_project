@@ -178,7 +178,7 @@ app.put('/register', (req, res) => {
 })
 
 //forget password
-app.put('/register' , (req,res) => {
+app.put('/login' , (req,res) => {
     connection.query(
         'UPDATE Register SET  `pass` = ?  WHERE id = ?',
         [req.body.password,req.body.id],
