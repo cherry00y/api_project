@@ -111,6 +111,7 @@ app.get('/favourite', (req, res) => {
 })
 
 app.get('/login/:id', (req, res) => {
+    const id = req.params.id;
     connection.execute(
         'SELECT  avatar FROM Register WHERE id = ?',[id],
         [req.body.email,req.body.password],
