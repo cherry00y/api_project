@@ -180,7 +180,16 @@ app.put('/register', (req, res) => {
 //forget password
 app.put('/register' , (req,res) => {
     connection.query(
-        'UPDATE Register SET  `pass` = ?  WHERE id = ?;'
+        'UPDATE Register SET  `pass` = ?  WHERE id = ?',
+        [req.body.password,req.body.id],
+        function (err, results, fields){
+            if(err){
+                console.error('Error in Put /register: ', err);
+                res.status(500).send('Error update password')
+            }else{
+                res.status(201).send(results)
+            }
+        }
     )
 })
 //delete
