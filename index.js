@@ -179,7 +179,7 @@ app.post('/favourite', (req, res) => {
 //update
 app.put('/register', (req, res) => {
     connection.query(
-        'UPDATE `Register` SET `fname`=?, `lname`=?, `username`=?, `email`=?,`phonenumber`=?,`password`=?, `avatar`=? WHERE id =?',
+        'UPDATE `Register` SET `fname`=?, `lname`=?, `username`=?, `email`=?,`phonenumber`=?,`pass`=?, `avatar`=? WHERE id =?',
         [req.body.fname, req.body.lname, req.body.username, req.body.email, req.body.phonenumber, req.body.password, req.body.avatar, req.body.id],
          function (err, results, fields) {
             if(err){
