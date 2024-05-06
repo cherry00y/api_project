@@ -110,7 +110,7 @@ app.get('/favourite', (req, res) => {
     )
 })
 
-app.post('/login/:id', (req, res) => {
+app.get('/login/:id', (req, res) => {
     connection.execute(
         'SELECT `avatar` FROM Register WHERE id = ?',
         [req.body.email,req.body.password],
