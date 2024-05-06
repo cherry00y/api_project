@@ -177,6 +177,12 @@ app.put('/register', (req, res) => {
     )
 })
 
+//forget password
+app.put('/register' , (req,res) => {
+    connection.query(
+        'UPDATE Register SET  `pass` = ?  WHERE id = ?;'
+    )
+})
 //delete
 app.delete('/favourite', (req, res) => {
     connection.query(
