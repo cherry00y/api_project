@@ -110,6 +110,20 @@ app.get('/favourite', (req, res) => {
     )
 })
 
+app.post('/login/:id', (req, res) => {
+    connection.execute(
+        'SELECT `avatar` FROM Register WHERE id = ?',
+        [req.body.email,req.body.password],
+        function(err, results, fields) {
+            if (err) {
+                console.error('Error in POST /register:', err);
+                res.status(500).send('Error');
+            } else {
+                res.status(200).send(results);
+            }
+        }
+    );
+});
 //login
 app.post('/login', (req, res) => {
     connection.execute(
