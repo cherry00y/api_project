@@ -110,7 +110,7 @@ app.get('/favourite', (req, res) => {
     )
 })
 
-app.get('/login/:id', (req, res) => {
+/*app.get('/login/:id', (req, res) => {
     const id = req.params.id;
     connection.execute(
         'SELECT  avatar FROM Register WHERE id = ?',[id],
@@ -124,7 +124,8 @@ app.get('/login/:id', (req, res) => {
             }
         }
     );
-});
+});*/
+
 //login
 app.post('/login', (req, res) => {
     connection.execute(
