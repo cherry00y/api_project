@@ -112,7 +112,7 @@ app.get('/favourite', (req, res) => {
 
 app.get('/login/:id', (req, res) => {
     connection.execute(
-        'SELECT `avatar` FROM Register WHERE id = ?',
+        'SELECT  avatar FROM Register WHERE id = ?',[id],
         [req.body.email,req.body.password],
         function(err, results, fields) {
             if (err) {
